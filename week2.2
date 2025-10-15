@@ -1,0 +1,342 @@
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+def rectangular_pulse(t):
+    return np.where((t >= -0.5) & (t <= 0.5), 1, 0)
+
+t = np.linspace(-2, 2, 1000)
+x = rectangular_pulse(t)
+
+plt.figure(figsize=(10, 5))
+plt.plot(t, x, 'b-', linewidth=3)
+plt.axvline(x=-0.5, color='red', linestyle='--', linewidth=1)
+plt.axvline(x=0.5, color='red', linestyle='--', linewidth=1)
+plt.title('x(t) = π(t) - Rectangular Pulse from -0.5 to 0.5')
+plt.xlabel('t')
+plt.ylabel('x(t)')
+plt.grid(True, alpha=0.3)
+plt.axhline(y=0, color='k', linewidth=0.5)
+plt.axvline(x=0, color='k', linewidth=0.5)
+plt.xlim(-2, 2)
+plt.ylim(-0.2, 1.5)
+plt.show()
+
+
+
+     
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+def rectangular_pulse(t):
+    return np.where((t >= -0.5) & (t <= 0.5), 1, 0)
+
+t = np.linspace(-2, 2, 1000)
+x = rectangular_pulse(t + 0.5)
+
+plt.figure(figsize=(10, 5))
+plt.plot(t, x, 'b-', linewidth=3)
+plt.axvline(x=-1, color='red', linestyle='--', linewidth=1)
+plt.axvline(x=0, color='red', linestyle='--', linewidth=1)
+plt.title('x(t) = π(t+0.5) - Shifted Rectangular Pulse')
+plt.xlabel('t')
+plt.ylabel('x(t)')
+plt.grid(True, alpha=0.3)
+plt.axhline(y=0, color='k', linewidth=0.5)
+plt.axvline(x=0, color='k', linewidth=0.5)
+plt.xlim(-2, 2)
+plt.ylim(-0.2, 1.5)
+plt.show()
+
+     
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+def rectangular_pulse(t):
+    return np.where((t >= -0.5) & (t <= 0.5), 1, 0)
+
+t = np.linspace(-2, 4, 1000)
+x = rectangular_pulse(t - 2)
+
+plt.figure(figsize=(10, 5))
+plt.plot(t, x, 'b-', linewidth=3)
+plt.axvline(x=1.5, color='red', linestyle='--', linewidth=1, label='t=1.5')
+plt.axvline(x=2.5, color='red', linestyle='--', linewidth=1, label='t=2.5')
+plt.title('x(t) = π(t-2) - Right Shifted Rectangular Pulse')
+plt.xlabel('t')
+plt.ylabel('x(t)')
+plt.grid(True, alpha=0.3)
+plt.axhline(y=0, color='k', linewidth=0.5)
+plt.axvline(x=0, color='k', linewidth=0.5)
+plt.xlim(-2, 4)
+plt.ylim(-0.2, 1.5)
+plt.legend()
+plt.show()
+     
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+def discrete_signal(n):
+    signal = np.zeros_like(n, dtype=float)
+    for i in range(len(n)):
+        if -2 <= n[i] <= 2:
+            if n[i] > 0:
+                signal[i] = 1
+            elif n[i] < 0:
+                signal[i] = -1
+            else:  # n[i] == 0
+                signal[i] = 0
+    return signal
+
+n = np.arange(-5, 6)  # Discrete time from -5 to 5
+x = discrete_signal(n)
+
+plt.figure(figsize=(12, 6))
+plt.stem(n, x, linefmt='b-', markerfmt='bo', basefmt='k-')
+plt.axhline(y=0, color='k', linewidth=0.5)
+plt.axvline(x=0, color='k', linewidth=0.5)
+plt.title('Discrete Signal x[n]')
+plt.xlabel('n')
+plt.ylabel('x[n]')
+plt.grid(True, alpha=0.3)
+plt.ylim(-1.5, 1.5)
+plt.xlim(-5.5, 5.5)
+
+# Add labels for important points
+for i, (xi, ni) in enumerate(zip(x, n)):
+    if -2 <= ni <= 2:
+        plt.text(ni, xi + 0.1, f'{int(xi)}', ha='center', va='bottom')
+
+plt.show()
+     
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+def discrete_signal(n):
+    signal = np.zeros_like(n, dtype=float)
+    for i in range(len(n)):
+        if -2 <= n[i] <= 2:
+            if n[i] > 0:
+                signal[i] = 1
+            elif n[i] < 0:
+                signal[i] = -1
+            else:  # n[i] == 0
+                signal[i] = 0
+    return signal
+
+n = np.arange(-8, 3)  # Discrete time from -8 to 2
+x = discrete_signal(n + 3)  # Shift left by 3
+
+plt.figure(figsize=(12, 6))
+plt.stem(n, x, linefmt='b-', markerfmt='bo', basefmt='k-')
+plt.axhline(y=0, color='k', linewidth=0.5)
+plt.axvline(x=0, color='k', linewidth=0.5)
+plt.title('Discrete Signal x[n+3]')
+plt.xlabel('n')
+plt.ylabel('x[n+3]')
+plt.grid(True, alpha=0.3)
+plt.ylim(-1.5, 1.5)
+plt.xlim(-8.5, 2.5)
+
+# Add labels for important points
+for i, (xi, ni) in enumerate(zip(x, n)):
+    if xi != 0:
+        plt.text(ni, xi + 0.1, f'{int(xi)}', ha='center', va='bottom')
+
+plt.show()
+     
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+def discrete_signal(n):
+    signal = np.zeros_like(n, dtype=float)
+    for i in range(len(n)):
+        if -2 <= n[i] <= 2:
+            if n[i] > 0:
+                signal[i] = 1
+            elif n[i] < 0:
+                signal[i] = -1
+            else:  # n[i] == 0
+                signal[i] = 0
+    return signal
+
+n = np.arange(-4, 7)  # Discrete time from -4 to 6
+x = discrete_signal(n - 1)  # Shift right by 1
+
+plt.figure(figsize=(12, 6))
+plt.stem(n, x, linefmt='b-', markerfmt='bo', basefmt='k-')
+plt.axhline(y=0, color='k', linewidth=0.5)
+plt.axvline(x=0, color='k', linewidth=0.5)
+plt.title('Discrete Signal x[n-1]')
+plt.xlabel('n')
+plt.ylabel('x[n-1]')
+plt.grid(True, alpha=0.3)
+plt.ylim(-1.5, 1.5)
+plt.xlim(-4.5, 6.5)
+
+# Add labels for important points
+for i, (xi, ni) in enumerate(zip(x, n)):
+    if xi != 0:
+        plt.text(ni, xi + 0.1, f'{int(xi)}', ha='center', va='bottom')
+
+plt.show()
+     
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 1. Discrete Time Reversal: x[-n]
+def discrete_signal(n):
+    signal = np.zeros_like(n, dtype=float)
+    for i in range(len(n)):
+        if -2 <= n[i] <= 2:
+            if n[i] > 0:
+                signal[i] = 1
+            elif n[i] < 0:
+                signal[i] = -1
+            else:
+                signal[i] = 0
+    return signal
+
+n = np.arange(-5, 6)
+x_original = discrete_signal(n)
+x_reversed = discrete_signal(-n)
+
+# Plot discrete time reversal
+plt.figure(figsize=(15, 5))
+
+plt.subplot(1, 2, 1)
+plt.stem(n, x_original, linefmt='b-', markerfmt='bo', basefmt='k-')
+plt.title('Original Discrete Signal: x[n]')
+plt.xlabel('n')
+plt.ylabel('x[n]')
+plt.grid(True, alpha=0.3)
+plt.ylim(-1.5, 1.5)
+
+plt.subplot(1, 2, 2)
+plt.stem(n, x_reversed, linefmt='r-', markerfmt='ro', basefmt='k-')
+plt.title('Time-Reversed Discrete Signal: x[-n]')
+plt.xlabel('n')
+plt.ylabel('x[-n]')
+plt.grid(True, alpha=0.3)
+plt.ylim(-1.5, 1.5)
+
+plt.tight_layout()
+plt.show()
+
+# 2. Continuous Time Reversal: x(-t)
+def rectangular_pulse(t):
+    return np.where((t >= -0.5) & (t <= 0.5), 1, 0)
+
+t = np.linspace(-2, 2, 1000)
+x_cont_original = rectangular_pulse(t)
+x_cont_reversed = rectangular_pulse(-t)
+
+# Plot continuous time reversal
+plt.figure(figsize=(15, 5))
+
+plt.subplot(1, 2, 1)
+plt.plot(t, x_cont_original, 'b-', linewidth=3)
+plt.axvline(x=-0.5, color='red', linestyle='--', linewidth=1)
+plt.axvline(x=0.5, color='red', linestyle='--', linewidth=1)
+plt.title('Original Continuous Signal: x(t)')
+plt.xlabel('t')
+plt.ylabel('x(t)')
+plt.grid(True, alpha=0.3)
+plt.ylim(-0.2, 1.5)
+
+plt.subplot(1, 2, 2)
+plt.plot(t, x_cont_reversed, 'r-', linewidth=3)
+plt.axvline(x=-0.5, color='blue', linestyle='--', linewidth=1)
+plt.axvline(x=0.5, color='blue', linestyle='--', linewidth=1)
+plt.title('Time-Reversed Continuous Signal: x(-t)')
+plt.xlabel('t')
+plt.ylabel('x(-t)')
+plt.grid(True, alpha=0.3)
+plt.ylim(-0.2, 1.5)
+
+plt.tight_layout()
+plt.show()
+     
+
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Continuous signal: Exponential decay starting from t=0
+def exponential_signal(t):
+    return np.where(t >= 0, np.exp(-2 * t), 0)
+
+t = np.linspace(-2, 4, 1000)
+x_original = exponential_signal(t)
+x_reversed = exponential_signal(-t)
+
+# Plot continuous time reversal
+plt.figure(figsize=(15, 5))
+
+plt.subplot(1, 2, 1)
+plt.plot(t, x_original, 'b-', linewidth=3)
+plt.axvline(x=0, color='red', linestyle='--', linewidth=1, alpha=0.7)
+plt.title('Original Signal: x(t) = e^(-2t)u(t)')
+plt.xlabel('Time (t)')
+plt.ylabel('x(t)')
+plt.grid(True, alpha=0.3)
+plt.ylim(-0.1, 1.2)
+
+plt.subplot(1, 2, 2)
+plt.plot(t, x_reversed, 'r-', linewidth=3)
+plt.axvline(x=0, color='blue', linestyle='--', linewidth=1, alpha=0.7)
+plt.title('Time-Reversed Signal: x(-t) = e^(2t)u(-t)')
+plt.xlabel('Time (t)')
+plt.ylabel('x(-t)')
+plt.grid(True, alpha=0.3)
+plt.ylim(-0.1, 1.2)
+
+plt.tight_layout()
+plt.show()
+
+# Another example: Triangular pulse
+def triangular_pulse(t):
+    return np.maximum(1 - np.abs(t), 0)
+
+t2 = np.linspace(-3, 3, 1000)
+x_tri_original = triangular_pulse(t2)
+x_tri_reversed = triangular_pulse(-t2)
+
+plt.figure(figsize=(15, 5))
+
+plt.subplot(1, 2, 1)
+plt.plot(t2, x_tri_original, 'g-', linewidth=3)
+plt.axvline(x=-1, color='red', linestyle='--', linewidth=1, alpha=0.5)
+plt.axvline(x=1, color='red', linestyle='--', linewidth=1, alpha=0.5)
+plt.title('Original Triangular Pulse: x(t)')
+plt.xlabel('Time (t)')
+plt.ylabel('x(t)')
+plt.grid(True, alpha=0.3)
+plt.ylim(-0.1, 1.2)
+
+plt.subplot(1, 2, 2)
+plt.plot(t2, x_tri_reversed, 'm-', linewidth=3)
+plt.axvline(x=-1, color='blue', linestyle='--', linewidth=1, alpha=0.5)
+plt.axvline(x=1, color='blue', linestyle='--', linewidth=1, alpha=0.5)
+plt.title('Time-Reversed Triangular Pulse: x(-t)')
+plt.xlabel('Time (t)')
+plt.ylabel('x(-t)')
+plt.grid(True, alpha=0.3)
+plt.ylim(-0.1, 1.2)
+
+plt.tight_layout()
+plt.show()
+     
+
